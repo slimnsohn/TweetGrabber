@@ -12,14 +12,21 @@ function parseTweetUrl(input) {
   return null;
 }
 
-async function fetchTweetText(user, id) {
-  const apiUrl = `https://api.fxtwitter.com/${user}/status/${id}`;
-  const resp = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(apiUrl)}`);
-  if (!resp.ok) {
-    throw new Error(`API returned ${resp.status}`);
+async function fetchWithRetry(url, retries) {
+  for (var i = 0; i <= retries; i++) {
+    var resp = await fetch(url);
+    if (resp.ok) return resp;
+    if (i < retries) await new Promise(function(r) { setTimeout(r, 500); });
   }
-  const data = await resp.json();
-  const tweet = data.tweet;
+  throw new Error("API returned " + resp.status);
+}
+
+async function fetchTweetText(user, id) {
+  var apiUrl = "https://api.fxtwitter.com/" + user + "/status/" + id;
+  var proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(apiUrl);
+  var resp = await fetchWithRetry(proxyUrl, 2);
+  var data = await resp.json();
+  var tweet = data.tweet;
   if (!tweet || !tweet.author) {
     throw new Error("No tweet data in response");
   }
