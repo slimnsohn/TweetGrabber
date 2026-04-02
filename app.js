@@ -8,7 +8,8 @@ function parseTweetUrl(input) {
 }
 
 async function fetchTweetText(user, id) {
-  const resp = await fetch(`https://api.fxtwitter.com/${user}/status/${id}`);
+  const apiUrl = `https://api.fxtwitter.com/${user}/status/${id}`;
+  const resp = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(apiUrl)}`);
   if (!resp.ok) {
     throw new Error(`API returned ${resp.status}`);
   }
@@ -92,7 +93,7 @@ async function handleCopy() {
     await navigator.clipboard.writeText(tweetText.textContent);
     copyConfirm.hidden = false;
     setTimeout(() => { copyConfirm.hidden = true; }, 2000);
-  } catch {
+  } catch (e) {
     // Fallback for older browsers
     const range = document.createRange();
     range.selectNodeContents(tweetText);
