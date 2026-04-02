@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tweet Text Grabber</title>
+  <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Tweet Text Grabber</h1>
+
+    <div id="input-section">
+      <input
+        type="url"
+        id="url-input"
+        placeholder="Paste tweet link here..."
+        autocomplete="off"
+        autocapitalize="off"
+      >
+      <button id="fetch-btn">Get Text</button>
+      <p id="error-msg" class="error" hidden></p>
+    </div>
+
+    <div id="result-section" hidden>
+      <div class="author">
+        <span id="author-name"></span>
+        <span id="author-handle"></span>
+      </div>
+      <div id="tweet-text"></div>
+      <div class="actions">
+        <button id="copy-btn">Copy to Clipboard</button>
+        <button id="clear-btn" class="secondary">Clear</button>
+      </div>
+      <p id="copy-confirm" class="confirm" hidden>Copied!</p>
+    </div>
+  </div>
+
+  <script src="static/app.js"></script>
+</body>
+</html>
