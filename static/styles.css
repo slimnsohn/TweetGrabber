@@ -21,9 +21,16 @@ body {
 
 h1 {
   font-size: 1.4rem;
-  margin-bottom: 24px;
+  margin-bottom: 4px;
   text-align: center;
   color: #fff;
+}
+
+.version {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #555;
+  margin-bottom: 24px;
 }
 
 #url-input {
