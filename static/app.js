@@ -29,8 +29,12 @@ async function fetchTweetText(user, id) {
           if (!tweet || !tweet.author) {
             throw new Error("No tweet data in response");
           }
+          var text = tweet.text;
+          if (!text && tweet.article) {
+            text = tweet.article.title + "\n\n" + tweet.article.preview_text;
+          }
           return {
-            text: tweet.text,
+            text: text || "No text found",
             authorName: tweet.author.name,
             authorHandle: tweet.author.screen_name,
           };
