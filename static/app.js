@@ -124,18 +124,13 @@ async function handleCopy() {
   }
 }
 
-// Auto-paste from clipboard when input is focused
-urlInput.addEventListener("focus", async function() {
-  if (urlInput.value) return;
-  try {
-    var clip = await navigator.clipboard.readText();
-    if (clip && parseTweetUrl(clip)) {
-      urlInput.value = clip;
+// Auto-fetch after paste (works on iOS — listens for the paste event)
+urlInput.addEventListener("paste", function() {
+  setTimeout(function() {
+    if (urlInput.value && parseTweetUrl(urlInput.value)) {
       handleFetch();
     }
-  } catch (e) {
-    // Clipboard permission denied — user will paste manually
-  }
+  }, 50);
 });
 
 fetchBtn.addEventListener("click", handleFetch);
