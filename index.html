@@ -9,7 +9,7 @@
 <body>
   <div class="container">
     <h1>Tweet Text Grabber</h1>
-    <p class="version">v7 — Apr 2, 2026</p>
+    <p class="version">v9 — Apr 2, 2026</p>
 
     <div id="input-section">
       <input
@@ -24,18 +24,16 @@
     </div>
 
     <div id="result-section" hidden>
-      <div class="result-header">
-        <div class="author">
-          <span id="author-name"></span>
-          <span id="author-handle"></span>
-        </div>
+      <div class="author">
+        <span id="author-name"></span>
+        <span id="author-handle"></span>
+      </div>
+      <div class="top-actions">
+        <button id="copy-btn">Copy</button>
         <button id="clear-btn" class="secondary">Clear</button>
       </div>
-      <div id="tweet-text"></div>
-      <div class="actions">
-        <button id="copy-btn">Copy to Clipboard</button>
-      </div>
       <p id="copy-confirm" class="confirm" hidden>Copied!</p>
+      <div id="tweet-text"></div>
     </div>
   </div>
 
