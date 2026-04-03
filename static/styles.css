@@ -43,7 +43,6 @@ h1 {
 }
 
 button {
-  width: 100%;
   padding: 16px;
   font-size: 1rem;
   font-weight: 600;
@@ -54,6 +53,7 @@ button {
 }
 
 #fetch-btn, #copy-btn {
+  width: 100%;
   background: #1d9bf0;
   color: #fff;
 }
@@ -71,7 +71,6 @@ button {
 .secondary {
   background: #333;
   color: #e5e5e5;
-  margin-top: 8px;
 }
 
 .secondary:active {
@@ -91,8 +90,14 @@ button {
   font-size: 0.9rem;
 }
 
-.author {
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 12px;
+}
+
+.author {
   font-size: 0.9rem;
   color: #999;
 }
@@ -104,6 +109,12 @@ button {
 
 #author-handle {
   margin-left: 6px;
+}
+
+#clear-btn {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  white-space: nowrap;
 }
 
 #tweet-text {
