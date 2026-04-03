@@ -124,13 +124,18 @@ async function handleCopy() {
   }
 }
 
-// Auto-fetch after paste (works on iOS — listens for the paste event)
+// Auto-fetch after paste — also listen for input change as fallback
 urlInput.addEventListener("paste", function() {
   setTimeout(function() {
     if (urlInput.value && parseTweetUrl(urlInput.value)) {
       handleFetch();
     }
-  }, 50);
+  }, 200);
+});
+urlInput.addEventListener("input", function() {
+  if (urlInput.value && parseTweetUrl(urlInput.value)) {
+    setTimeout(function() { handleFetch(); }, 100);
+  }
 });
 
 fetchBtn.addEventListener("click", handleFetch);
