@@ -14,7 +14,7 @@
       <input
         type="text"
         id="url-input"
-        placeholder="Paste tweet link here..."
+        placeholder="Tap here to paste tweet link..."
         autocomplete="off"
         autocapitalize="off"
       >
@@ -23,14 +23,16 @@
     </div>
 
     <div id="result-section" hidden>
-      <div class="author">
-        <span id="author-name"></span>
-        <span id="author-handle"></span>
+      <div class="result-header">
+        <div class="author">
+          <span id="author-name"></span>
+          <span id="author-handle"></span>
+        </div>
+        <button id="clear-btn" class="secondary">Clear</button>
       </div>
       <div id="tweet-text"></div>
       <div class="actions">
         <button id="copy-btn">Copy to Clipboard</button>
-        <button id="clear-btn" class="secondary">Clear</button>
       </div>
       <p id="copy-confirm" class="confirm" hidden>Copied!</p>
     </div>
